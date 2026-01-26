@@ -6,12 +6,36 @@
 //
 
 import SwiftUI
+/*
+ Model -> data point
+ View -> UI
+ ViewModel -> manages Model for View
+ 
+ 
+ */
 
 @main
 struct Todo_MVVMApp: App {
+    
+    @StateObject var listViewModel: ListViewModel =  ListViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView{
+                TodoListView()
+            }
+            .navigationViewStyle(.stack)
+            .environmentObject(listViewModel)
         }
     }
 }
+
+
+//@main
+//struct TodoApp: App {
+//    var body: some Scene {
+//        WindowGroup {
+//            TodoListView()
+//        }
+//    }
+//}
